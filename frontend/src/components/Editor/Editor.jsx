@@ -41,7 +41,7 @@ const Editor = () => {
             value={text}
             onChange={(e) => setText(e.target.value)}
             rows={10}
-            placeholder="Type your tweet"
+            placeholder="Type your tweet.."
           />
           <br />
           <button type="submit">Analyze</button>
