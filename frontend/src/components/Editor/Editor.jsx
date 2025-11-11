@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./Editor.css";
+import robot from "../../assets/robot.png"; // <-- Make sure this path is correct
 
 const Editor = () => {
-  const [text, setText] = useState("");            
-  const [result, setResult] = useState("");       
+  const [text, setText] = useState("");
+  const [result, setResult] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -20,7 +22,7 @@ const Editor = () => {
       });
 
       const data = await response.json();
-      setResult(data.prediction); 
+      setResult(data.prediction);
     } catch (error) {
       console.error("Error:", error);
       setResult("Error connecting to server");
@@ -29,25 +31,24 @@ const Editor = () => {
 
   return (
     <div className="editor-container">
-      <form onSubmit={handleSubmit}>
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}  
-          rows={5}
-          cols={50}
-          placeholder="Type your sentence..."
-        />
-        <br />
-        <button type="submit" style={{ marginTop: "10px" }}>
-          Analyze
-        </button>
-      </form>
+      <div className="editor-left">
+        <img src={robot} alt="Robot" />
+      </div>
 
-      {result && (
-        <p style={{ marginTop: "15px", fontWeight: "bold" }}>
-          Sentiment: {result}
-        </p>
-      )}
+      <div className="editor-right">
+        <form onSubmit={handleSubmit}>
+          <textarea
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            rows={10}
+            placeholder="Type your sentence..."
+          />
+          <br />
+          <button type="submit">Analyze</button>
+        </form>
+
+        {result && <p className="result-text">Sentiment: {result}</p>}
+      </div>
     </div>
   );
 };

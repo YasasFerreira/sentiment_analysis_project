@@ -1,55 +1,62 @@
 .editor-container {
-  display: flex;
-  justify-content: flex-end;   
-  align-items: center;
-  justify-items: center;
-  padding: 50px 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100vh;
+    padding:0px;
+    box-sizing: border-box;
+    gap: 20px;
 }
 
-.editor-container form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end; 
-  padding: 50px 50px;
-  border-radius: 16px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  width: 400px; 
-  max-width: 90%; 
+.editor-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+.editor-left img {
+    max-width: 100%;
+    height: 500px;
 }
 
-.editor-container textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  resize: none;
-  font-size: 16px;
-  transition: border-color 0.3s;
+.editor-right {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.editor-container textarea:focus {
-  border-color: #3b82f6; 
-  outline: none;
+.editor-right textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px ;
+    font-size: 16px;
+    resize: vertical;
+    border-radius: 14px;
 }
 
-.editor-container button {
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.editor-right button {
+    margin-top: 10px;
+    border-radius: 14px;
+    width: 200px;
+    height:50px;
+    font-weight: 700;
+    padding: 8px 16px;
+    background: #2563eb;;
+    font-size: 16px;
+    color:whitesmoke;
+    cursor: pointer;
+    border: none;
+  
 }
-
-.editor-container button:hover {
-  transform:scale(1.10);
+.editor-right button:hover{
+    transform: scale(1.10);
 }
-
-.editor-container p {
-  margin-top: 15px;
-  font-weight: bold;
-  color: #333;
-  text-align: right;
+.result-text {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 18px;
 }
