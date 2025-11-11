@@ -1,0 +1,55 @@
+.editor-container {
+  display: flex;
+  justify-content: flex-end;   
+  align-items: center;
+  justify-items: center;
+  padding: 50px 200px;
+}
+
+.editor-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; 
+  padding: 50px 50px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  width: 400px; 
+  max-width: 90%; 
+}
+
+.editor-container textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  resize: none;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.editor-container textarea:focus {
+  border-color: #3b82f6; 
+  outline: none;
+}
+
+.editor-container button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.editor-container button:hover {
+  transform:scale(1.10);
+}
+
+.editor-container p {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #333;
+  text-align: right;
+}
