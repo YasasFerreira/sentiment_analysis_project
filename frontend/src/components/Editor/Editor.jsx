@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./Editor.css";
-import robot from "../../assets/robot.png"; // <-- Make sure this path is correct
+import robot from "../../assets/robot.png";
 
 const Editor = () => {
   const [text, setText] = useState("");
   const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,6 +15,9 @@ const Editor = () => {
       return;
     }
 
+    setLoading(true);
+    setResult("");
+
     try {
       const response = await fetch("http://127.0.0.1:5000/predict", {
         method: "POST",
@@ -21,11 +25,17 @@ const Editor = () => {
         body: JSON.stringify({ text }),
       });
 
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
       const data = await response.json();
-      setResult(data.prediction);
+      setResult(data.sentiment); // Correct field from Flask
     } catch (error) {
       console.error("Error:", error);
       setResult("Error connecting to server");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -41,12 +51,13 @@ const Editor = () => {
             value={text}
             onChange={(e) => setText(e.target.value)}
             rows={10}
-            placeholder="Type your tweet.."
+            placeholder="Type your tweet..."
           />
           <br />
-          <button type="submit">Analyze</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Analyzing..." : "Analyze"}
+          </button>
         </form>
-
         {result && <p className="result-text">Sentiment: {result}</p>}
       </div>
     </div>
