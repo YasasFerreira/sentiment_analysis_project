@@ -30,7 +30,7 @@ const Editor = () => {
       }
 
       const data = await response.json();
-      setResult(data.sentiment); // Correct field from Flask
+      setResult(data.sentiment); 
     } catch (error) {
       console.error("Error:", error);
       setResult("Error connecting to server");
